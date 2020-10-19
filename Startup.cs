@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using AmaZen.Repositories;
 using AmaZen.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,8 +40,7 @@ namespace AmaZen
 
 
       services.AddTransient<ProductsService>();
-
-
+      services.AddTransient<ProductsRepository>();
 
     }
 
