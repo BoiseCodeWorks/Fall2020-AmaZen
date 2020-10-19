@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using AmaZen.Services;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MySqlConnector;
 
 namespace AmaZen
 {
@@ -19,6 +21,10 @@ namespace AmaZen
     public Startup(IConfiguration configuration)
     {
       Configuration = configuration;
+
+
+
+
     }
 
     public IConfiguration Configuration { get; }
@@ -28,11 +34,23 @@ namespace AmaZen
     {
       services.AddControllers();
 
+      services.AddScoped<IDbConnection>(x => CreateDbConnection());
+
+
+
       services.AddTransient<ProductsService>();
 
 
 
     }
+
+    private IDbConnection CreateDbConnection()
+    {
+      var connectionString = Configuration.GetSection("DB").GetValue<string>("gearhost");
+      return new MySqlConnection(connectionString);
+    }
+
+
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
