@@ -46,6 +46,11 @@ namespace AmaZen.Services
       return _repo.Edit(updated);
     }
 
+    internal IEnumerable<WishListProductViewModel> GetProductsByListId(int id)
+    {
+      return _repo.GetProductsByListId(id);
+    }
+
     internal string Delete(int id)
     {
       var data = GetById(id);

@@ -53,6 +53,17 @@ namespace AmaZen.Repositories
       return updated;
     }
 
+    internal IEnumerable<WishListProductViewModel> GetProductsByListId(int id)
+    {
+      string sql = @"
+      SELECT p.*, wlp.id AS WishListProductId
+      FROM wishlistproducts wlp
+      JOIN products p ON p.id = wlp.productId
+      WHERE wishlistId = @id
+      ";
+      return _db.Query<WishListProductViewModel>(sql, new { id });
+    }
+
     internal void Delete(int id)
     {
       string sql = "DELETE FROM products WHERE id = @id";

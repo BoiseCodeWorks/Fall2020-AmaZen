@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AmaZen.Models;
 using AmaZen.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,12 @@ namespace AmaZen.Controllers
   public class WishListsController : ControllerBase
   {
     private readonly WishListsService _service;
+    private readonly ProductsService _prodService;
 
-    public WishListsController(WishListsService service)
+    public WishListsController(WishListsService service, ProductsService prodService)
     {
       _service = service;
+      _prodService = prodService;
     }
 
     [HttpGet("{id}")]
@@ -22,6 +25,23 @@ namespace AmaZen.Controllers
       try
       {
         return Ok(_service.GetById(id));
+      }
+      catch (AccessViolationException e)
+      {
+        return Forbid(e.Message);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet("{id}/products")] // api/lists/:id/products
+    public ActionResult<IEnumerable<WishListProductViewModel>> GetProducts(int id)
+    {
+      try
+      {
+        return Ok(_prodService.GetProductsByListId(id));
       }
       catch (AccessViolationException e)
       {

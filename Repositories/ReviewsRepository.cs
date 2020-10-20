@@ -52,6 +52,7 @@ namespace AmaZen.Repositories
       _db.Execute(sql, new { id });
     }
 
+    // NOTE One to Many Getter
     internal IEnumerable<Review> GetByProductId(int id)
     {
       string sql = "SELECT * FROM reviews WHERE productId = @id";

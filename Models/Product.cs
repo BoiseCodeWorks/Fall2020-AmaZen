@@ -13,4 +13,11 @@ namespace AmaZen.Models
     public float Price { get; set; }
   }
 
+  // getting all products by list id
+  public class WishListProductViewModel : Product
+  {
+    // Inherits from Product and adds relationship id
+    public int WishListProductId { get; set; }
+  }
+
 }
