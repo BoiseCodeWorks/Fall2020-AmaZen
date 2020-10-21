@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using AmaZen.Models;
 using AmaZen.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmaZen.Controllers
 {
   [ApiController]
+  [Authorize]
   [Route("api/[controller]")]
   public class WishListsController : ControllerBase
   {
