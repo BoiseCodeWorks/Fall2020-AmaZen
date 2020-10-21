@@ -11,6 +11,7 @@ namespace AmaZen.Models
     public string Title { get; set; }
     public string Description { get; set; }
     public float Price { get; set; }
+    public string CreatorId { get; set; }
   }
 
   // getting all products by list id

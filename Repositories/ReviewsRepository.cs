@@ -25,9 +25,9 @@ namespace AmaZen.Repositories
     {
       string sql = @"
       INSERT INTO reviews
-      (title, body, rating, productId)
+      (title, body, rating, productId, creatorId)
       VALUES
-      (@Title, @Body, @Rating, @ProductId);
+      (@Title, @Body, @Rating, @ProductId, @CreatorId);
       SELECT LAST_INSERT_ID()";
       newReview.Id = _db.ExecuteScalar<int>(sql, newReview);
       return newReview;

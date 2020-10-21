@@ -1,61 +1,83 @@
 /* SCHEMA using 'CREATE TABLE', this is only done manually at the very start of the application or if you need a "fresh" database */
 
 /* DANGER THIS WILL DESTROY THE TABLE AND ALL ITS DATA PERMENANTLY */
-/* DROP TABLE products; */
 
+/* DROP TABLE wishlistproducts;
+DROP TABLE reviews;
+DROP TABLE products;
+DROP TABLE wishlists; */
 
+/* CREATE TABLE profiles
+(
+  id VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
+  picture VARCHAR(255),
+  PRIMARY KEY (id)
+);
 
--- CREATE TABLE products
--- ( 
---   id INT NOT NULL AUTO_INCREMENT,
---   title VARCHAR(255) NOT NULL,
---   description VARCHAR(255),
---   price DECIMAL(6, 2) NOT NULL,
+CREATE TABLE products
+( 
+  id INT NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  price DECIMAL(6, 2) NOT NULL,
+  creatorId VARCHAR(255) NOT NULL, 
+  PRIMARY KEY (id),
 
---   PRIMARY KEY (id)
--- );
+  FOREIGN KEY (creatorId)
+   REFERENCES profiles (id)
+   ON DELETE CASCADE
+);
 
--- CREATE TABLE wishlists 
--- ( 
---   id INT NOT NULL AUTO_INCREMENT, 
---   title VARCHAR(255) NOT NULL,
---   PRIMARY KEY (id)
--- );
+CREATE TABLE wishlists 
+( 
+  id INT NOT NULL AUTO_INCREMENT, 
+  title VARCHAR(255) NOT NULL,
+  creatorId VARCHAR(255) NOT NULL, 
+  PRIMARY KEY (id),
 
--- CREATE TABLE reviews
--- (
---   id INT AUTO_INCREMENT, 
---   title VARCHAR(255) NOT NULL,
---   body VARCHAR(255) NOT NULL,
---   rating INT,
---   CHECK (rating > 0 AND rating < 6),
---   productId INT,
+  FOREIGN KEY (creatorId)
+   REFERENCES profiles (id)
+   ON DELETE CASCADE
+);
 
---   PRIMARY KEY (id),
+CREATE TABLE reviews
+(
+  id INT AUTO_INCREMENT, 
+  title VARCHAR(255) NOT NULL,
+  body VARCHAR(255) NOT NULL,
+  rating INT,
+  CHECK (rating > 0 AND rating < 6),
+  productId INT,
+  creatorId VARCHAR(255) NOT NULL, 
+  PRIMARY KEY (id),
+  
+  INDEX (productId),
 
---   INDEX (productId),
+  FOREIGN KEY (creatorId)
+   REFERENCES profiles (id)
+   ON DELETE CASCADE,
 
---   FOREIGN KEY (productId) 
---     REFERENCES products (id)
---     ON DELETE CASCADE
--- );
+  FOREIGN KEY (productId) 
+    REFERENCES products (id)
+    ON DELETE CASCADE
+);
+CREATE TABLE wishlistproducts
+(
+  id INT AUTO_INCREMENT,
+  productId INT,
+  wishlistId INT,
+  PRIMARY KEY (id),
 
--- CREATE TABLE wishlistproducts
--- (
---   id INT AUTO_INCREMENT,
---   productId INT,
---   wishlistId INT,
+  FOREIGN KEY (productId) 
+    REFERENCES products (id) 
+    ON DELETE CASCADE,
 
---   PRIMARY KEY (id),
-
---   FOREIGN KEY (productId) 
---     REFERENCES products (id) 
---     ON DELETE CASCADE,
-
---   FOREIGN KEY (wishlistId) 
---     REFERENCES wishlists (id)
---     ON DELETE CASCADE
--- );
+  FOREIGN KEY (wishlistId) 
+    REFERENCES wishlists (id)
+    ON DELETE CASCADE
+); */
 
 
 

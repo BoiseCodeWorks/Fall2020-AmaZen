@@ -37,12 +37,12 @@ namespace AmaZen.Services
     internal Product Edit(Product updated)
     {
       var data = GetById(updated.Id);
-
-      // NOTE what if description is not provided?
+      if (data.CreatorId != updated.CreatorId)
+      {
+        throw new Exception("Invalid Edit Permissions");
+      }
       updated.Description = updated.Description != null ? updated.Description : data.Description;
       updated.Title = updated.Title != null && updated.Title.Length > 2 ? updated.Title : data.Title;
-
-
       return _repo.Edit(updated);
     }
 
@@ -51,9 +51,13 @@ namespace AmaZen.Services
       return _repo.GetProductsByListId(id);
     }
 
-    internal string Delete(int id)
+    internal string Delete(int id, string userId)
     {
       var data = GetById(id);
+      if (data.CreatorId != userId)
+      {
+        throw new Exception("Invalid Edit Permissions");
+      }
       _repo.Delete(id);
       return "delorted";
     }

@@ -15,12 +15,6 @@ namespace AmaZen.Repositories
       _db = db;
     }
 
-    internal Profile GetByEmail(string userEmail)
-    {
-      string sql = "SELECT * FROM profiles WHERE email = @userEmail";
-      return _db.QueryFirstOrDefault<Profile>(sql, new { userEmail });
-    }
-
     internal Profile GetById(string id)
     {
       string sql = "SELECT * FROM profiles WHERE id = @id";
@@ -36,18 +30,6 @@ namespace AmaZen.Repositories
               (@Name, @Picture, @Email, @Id)";
       _db.Execute(sql, newProfile);
       return newProfile;
-    }
-
-    internal Profile Edit(Profile update)
-    {
-      string sql = @"
-            UPDATE profiles
-            SET 
-              name = @Name,
-              picture = @Picture
-            WHERE id = @Id;";
-      _db.Execute(sql, update);
-      return update;
     }
   }
 }

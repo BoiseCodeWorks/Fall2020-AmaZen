@@ -1,7 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AmaZen.Models;
 using AmaZen.Services;
+using CodeWorks.Auth0Provider;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmaZen.Controllers
@@ -58,11 +61,17 @@ namespace AmaZen.Controllers
       }
     }
 
+
     [HttpPost]
-    public ActionResult<Product> Create([FromBody] Product newProd)
+    [Authorize]
+    // NOTE ANYTIME you need to use Async/Await you will return a Task
+    public async Task<ActionResult<Product>> Create([FromBody] Product newProd)
     {
       try
       {
+        // NOTE HttpContext == 'req'
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        newProd.CreatorId = userInfo.Id;
         return Ok(_service.Create(newProd));
       }
       catch (Exception e)
@@ -72,10 +81,13 @@ namespace AmaZen.Controllers
     }
 
     [HttpPut("{id}")]
-    public ActionResult<Product> Edit([FromBody] Product updated, int id)
+    [Authorize]
+    public async Task<ActionResult<Product>> Edit([FromBody] Product updated, int id)
     {
       try
       {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        updated.CreatorId = userInfo.Id;
         updated.Id = id;
         return Ok(_service.Edit(updated));
       }
@@ -86,11 +98,13 @@ namespace AmaZen.Controllers
     }
 
     [HttpDelete("{id}")]
-    public ActionResult<Product> Delete(int id)
+    [Authorize]
+    public async Task<ActionResult<Product>> Delete(int id)
     {
       try
       {
-        return Ok(_service.Delete(id));
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_service.Delete(id, userInfo.Id));
       }
       catch (Exception e)
       {

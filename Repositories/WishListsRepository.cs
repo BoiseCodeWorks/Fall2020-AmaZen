@@ -23,9 +23,9 @@ namespace AmaZen.Repositories
     {
       string sql = @"
       INSERT INTO wishlists
-      (title)
+      (title, creatorId)
       VALUES
-      (@Title);
+      (@Title, @CreatorId);
       SELECT LAST_INSERT_ID()";
       newWishList.Id = _db.ExecuteScalar<int>(sql, newWishList);
       return newWishList;

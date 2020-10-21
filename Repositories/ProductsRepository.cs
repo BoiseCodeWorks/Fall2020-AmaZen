@@ -31,9 +31,9 @@ namespace AmaZen.Repositories
     {
       string sql = @"
       INSERT INTO products 
-      (title, description, price) 
+      (title, description, price, creatorId) 
       VALUES 
-      (@Title, @Description, @Price);
+      (@Title, @Description, @Price, @creatorId);
       SELECT LAST_INSERT_ID();";
       int id = _db.ExecuteScalar<int>(sql, newProd);
       newProd.Id = id;

@@ -61,12 +61,18 @@ namespace AmaZen
 
 
 
+      services.AddTransient<ProfilesService>();
+      services.AddTransient<ProfilesRepository>();
+
       services.AddTransient<ProductsService>();
       services.AddTransient<ProductsRepository>();
+
       services.AddTransient<ReviewsService>();
       services.AddTransient<ReviewsRepository>();
+
       services.AddTransient<WishListProductsService>();
       services.AddTransient<WishListProductsRepository>();
+
       services.AddTransient<WishListsService>();
       services.AddTransient<WishListsRepository>();
 
