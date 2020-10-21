@@ -35,16 +35,24 @@ namespace AmaZen.Services
       {
         throw new Exception("Bad Request");
       }
+      if (original.CreatorId != update.CreatorId)
+      {
+        throw new Exception("Invalid Permissions");
+      }
       update.Title = update.Title != null ? update.Title : original.Title;
       return _repo.Edit(update);
     }
 
-    internal String Delete(int id)
+    internal String Delete(int id, string userId)
     {
       var original = GetById(id);
       if (original == null)
       {
         throw new Exception("Bad Request");
+      }
+      if (original.CreatorId != userId)
+      {
+        throw new Exception("Invalid Permissions");
       }
       _repo.Delete(id);
       return "Successfully Deleted";

@@ -1,6 +1,9 @@
 using System;
+using System.Threading.Tasks;
 using AmaZen.Models;
 using AmaZen.Services;
+using CodeWorks.Auth0Provider;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AmaZen.Controllers
@@ -35,10 +38,13 @@ namespace AmaZen.Controllers
 
 
     [HttpPost]
-    public ActionResult<Review> Create([FromBody] Review newReview)
+    [Authorize]
+    public async Task<ActionResult<Review>> Create([FromBody] Review newReview)
     {
       try
       {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        newReview.CreatorId = userInfo.Id;
         return Ok(_service.Create(newReview));
       }
       catch (Exception e)
@@ -49,10 +55,12 @@ namespace AmaZen.Controllers
 
 
     [HttpPut("{id}")]
-    public ActionResult<Review> Edit([FromBody] Review update, int id)
+    public async Task<ActionResult<Review>> Edit([FromBody] Review update, int id)
     {
       try
       {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        update.CreatorId = userInfo.Id;
         update.Id = id;
         return Ok(_service.Edit(update));
       }
@@ -63,11 +71,13 @@ namespace AmaZen.Controllers
     }
 
     [HttpDelete("{id}")]
-    public ActionResult<String> Delete(int id)
+    [Authorize]
+    public async Task<ActionResult<String>> Delete(int id)
     {
       try
       {
-        return Ok(_service.Delete(id));
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_service.Delete(id, userInfo.Id));
       }
       catch (Exception e)
       {

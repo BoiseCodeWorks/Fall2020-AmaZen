@@ -72,6 +72,7 @@ namespace AmaZen.Controllers
         // NOTE HttpContext == 'req'
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         newProd.CreatorId = userInfo.Id;
+        newProd.Creator = userInfo;
         return Ok(_service.Create(newProd));
       }
       catch (Exception e)
@@ -88,6 +89,7 @@ namespace AmaZen.Controllers
       {
         Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
         updated.CreatorId = userInfo.Id;
+        updated.Creator = userInfo;
         updated.Id = id;
         return Ok(_service.Edit(updated));
       }

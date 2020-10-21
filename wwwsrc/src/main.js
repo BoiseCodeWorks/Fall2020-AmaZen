@@ -1,9 +1,9 @@
+import { Auth0Plugin } from "@bcwdev/auth0-vue";
 import Vue from "vue";
 import App from "./App.vue";
+import { audience, clientId, domain } from "./authConfig";
 import router from "./router";
 import store from "./store";
-import { Auth0Plugin, onAuth } from "@bcwdev/auth0-vue";
-import { domain, clientId, audience } from "./authConfig";
 
 Vue.use(Auth0Plugin, {
   domain,

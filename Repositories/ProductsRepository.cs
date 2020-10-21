@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using AmaZen.Models;
 using Dapper;
 
@@ -17,14 +18,33 @@ namespace AmaZen.Repositories
 
     internal IEnumerable<Product> GetAll()
     {
-      string sql = "SELECT * FROM products";
-      return _db.Query<Product>(sql);
+      string sql = @"
+      SELECT 
+      prod.*,
+      prof.*
+      FROM products prod
+      JOIN profiles prof ON prod.creatorId = prof.id";
+      return _db.Query<Product, Profile, Product>(sql, (product, profile) =>
+      {
+        product.Creator = profile;
+        return product;
+      }, splitOn: "id");
     }
 
     internal Product GetById(int id)
     {
-      string sql = "SELECT * FROM products WHERE id = @id";
-      return _db.QueryFirstOrDefault<Product>(sql, new { id });
+      string sql = @" 
+      SELECT 
+      prod.*,
+      prof.*
+      FROM products prod
+      JOIN profiles prof ON prod.creatorId = prof.id
+      WHERE id = @id";
+      return _db.Query<Product, Profile, Product>(sql, (product, profile) =>
+      {
+        product.Creator = profile;
+        return product;
+      }, new { id }, splitOn: "id").FirstOrDefault();
     }
 
     internal Product Create(Product newProd)

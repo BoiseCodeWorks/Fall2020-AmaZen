@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using AmaZen.Models;
 using AmaZen.Services;
+using CodeWorks.Auth0Provider;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,10 +59,13 @@ namespace AmaZen.Controllers
 
 
     [HttpPost]
-    public ActionResult<WishList> Create([FromBody] WishList newWishList)
+    [Authorize]
+    public async Task<ActionResult<WishList>> Create([FromBody] WishList newWishList)
     {
       try
       {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        newWishList.CreatorId = userInfo.Id;
         return Ok(_service.Create(newWishList));
       }
       catch (Exception e)
@@ -71,10 +76,13 @@ namespace AmaZen.Controllers
 
 
     [HttpPut("{id}")]
-    public ActionResult<WishList> Edit([FromBody] WishList update, int id)
+    [Authorize]
+    public async Task<ActionResult<WishList>> Edit([FromBody] WishList update, int id)
     {
       try
       {
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        update.CreatorId = userInfo.Id;
         update.Id = id;
         return Ok(_service.Edit(update));
       }
@@ -85,11 +93,13 @@ namespace AmaZen.Controllers
     }
 
     [HttpDelete("{id}")]
-    public ActionResult<String> Delete(int id)
+    [Authorize]
+    public async Task<ActionResult<String>> Delete(int id)
     {
       try
       {
-        return Ok(_service.Delete(id));
+        Profile userInfo = await HttpContext.GetUserInfoAsync<Profile>();
+        return Ok(_service.Delete(id, userInfo.Id));
       }
       catch (Exception e)
       {
