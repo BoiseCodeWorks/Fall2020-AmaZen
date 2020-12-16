@@ -22,11 +22,11 @@ When building AmaZen you consider the following `User Stories`:
  - as an owner of a wishlist I can remove products from that list, or delete the list entirely.
 
 ## The Setup
-
-Students will be given a C# backend template that includes the necessary profile rules for Auth0 integration. Students will be required to setup their own Auth0 and Database variables.
-
 Students should use the **Vue-Starter** template from the `bcw-create` CLI tool.  Students will have to set up their own Auth0 environment variables here as well.
 
+On the server side, you will want to set up your Auth0 and Database Variables as well. Starting development for AmaZen you will want to create some models. When doing this keep in mind the relationship between `products` and wish `lists`. You will need to manage the users `profile`, their `products`, `wish lists` and their respective relationship model(wishlistproduct, productwishlist) as well as the view model to go with it.
+
+Members will be allowed to create `products` and then save those `products` and the  `products` of others in their `wish lists`.
 
 
 
