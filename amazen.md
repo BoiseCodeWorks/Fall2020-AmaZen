@@ -1,24 +1,24 @@
 # AmaZen
 <img class="img-responsive" src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&h=600&q=80">
 
-Welcome to the AmaZen Dev team! AmaZen is a state of the art shopping application where users can post products to a store to be sold and wishlist products they wish to buy!  We think this is a totally unique application that will take the world by storm! Problem is we don't know how to build a website, or a server, or an A-Pea-eye? ...So that is where you come in!  We need your help building our dream, if completed to our specifications when we launch you will be given an AmaZen `gift card**` worthy of your efforts
+Welcome to the AmaZen Dev team! AmaZen is a Chakra Cleansing shopping experience where voyagers can add their latest Zen products to our co-op to be sold. They can also create collections of all the chi enriching products to a wishlist to later review and to buy!  This is a totally unique application that will take the world by storm! Problem is we don't know how to build a website, or a server, or an A-Pea-eye? ...So that is where you come in!  We need your help building our dream, if completed to our specifications when we launch you will be given an AmaZen `gift card**` worthy of your efforts
 
 ## Goals
 
 In this checkpoint students will demonstrate a working knowledge of building full-stack applications. They will utilize a VueJs frontend using an AppState/observer pattern (`reactive`) to interact with the DOM. On the server side students will use a DotNet core web api utilizing the MVC design pattern, a MySQL Database hosted on GearHost, as well as implementing an Auth0 login to handle user profiles. Students will also be given a design mock that they will need to follow.
 
-## The Business Logic
+## The Business Rules
 
 AmaZen is a simple enough application, the store page should have listings for all the products that are available, selecting a product should give you a more detailed view of that product. From there a user can then add that product to one of their wishlists. A user can only edit/delete what they create.
 When building AmaZen you consider the following `User Stories`:
  - as a User, I can browse all the available products without being logged in.
-  - as a User, I can select a product and view it's details without being logged in.
-  - as a User, I can create and account and become a member.
+ - as a User, I can select a product and view it's details without being logged in.
+ - as a User, I can create and account and become a member.
  - as a member, I can upload products to the store page.
-  - as an owner of a product, I can edit or delete a product I have created.
-  - as a owner of a product, I can mark a product 'un-available' without it being deleted.
-  - as a member, I can create wishlists that can store products from the store I wish to buy.
-  - as a member, I can browse all the products on a single wishlist.
+ - as an owner of a product, I can edit or delete a product I have created.
+ - as a owner of a product, I can mark a product 'un-available' without it being deleted.
+ - as a member, I can create wishlists that can store products from the store I wish to buy.
+ - as a member, I can browse all the products on a single wishlist.
  - as an owner of a wishlist I can remove products from that list, or delete the list entirely.
 
 ## The Setup
