@@ -6,6 +6,7 @@ Welcome to the AmaZen Dev team! AmaZen is a Chakra Cleansing shopping experience
 ## Goals
 
 In this checkpoint students will demonstrate a working knowledge of building full-stack applications. They will utilize a VueJs frontend using an AppState/observer pattern (`reactive`) to interact with the DOM. On the server side students will use a DotNet core web api utilizing the MVC design pattern, a MySQL Database hosted on GearHost, as well as implementing an Auth0 login to handle user profiles. Students will also be given a design mock that they will need to follow.
+- [Figma Mock](https://www.figma.com/file/BHMu1rLH2lFEC13I6gYw5m/AmaZen-Mock?node-id=0%3A1)
 
 ## The Business Rules
 
@@ -27,7 +28,6 @@ Students should use the **Vue-Starter** template from the `bcw-create` CLI tool.
 On the server side, you will want to set up your Auth0 and Database Variables as well. Starting development for AmaZen you will want to create some models. When doing this keep in mind the relationship between `products` and wish `lists`. You will need to manage the users `profile`, their `products`, `wish lists` and their respective relationship model(wishlistproduct, productwishlist) as well as the view model to go with it.
 
 Members will be allowed to create `products` and then save those `products` and the  `products` of others in their `wish lists`.
-
 
 
 
