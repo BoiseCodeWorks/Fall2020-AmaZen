@@ -49,13 +49,13 @@ Members will be allowed to create `products` and then save those `products` and 
 - The Backend needs to be able to create and store the **Wishlists** created by users
 
 ### Bonus Ideas:
-- A user reviews can be added to products.
-- A Wishlists can be privatized or public
+- A user ratings(stars/points) can be added to products.
+- A Wishlists can be private or shared
 - A single product can have multiple "options" (think 1 shirt with many colors)
 - A search function to find products faster
 - Implement a Sale price, and a "on Sale" property for products
-- Sort Store Page to show on sale products first
-- Products have category tags for easier searching by tags
+    - Sort Store Page to show on sale products first
+- Products have category tags for easier searching by tags/category
 
 
 <small>**AmaZen gift card is not guaranteed to hold any real world value and likely will not have any real world value outside of bragging rights over your fellow peers</small>
