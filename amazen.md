@@ -1,7 +1,7 @@
 # AmaZen
 <img class="img-responsive" src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&h=600&q=80">
 
-Welcome to the AmaZen Dev team! AmaZen is a Chakra Cleansing shopping experience where voyagers can add their latest Zen products to our co-op to be sold. They can also create collections of all the chi enriching products to a wishlist to later review and to buy!  This is a totally unique application that will take the world by storm! Problem is we don't know how to build a website, or a server, or an A-Pea-eye? ...So that is where you come in!  We need your help building our dream, if completed to our specifications when we launch you will be given an AmaZen `gift card**` worthy of your efforts
+Welcome to the AmaZen Dev team! AmaZen is a Chakra Cleansing shopping experience where voyagers can add their latest Zen products to our co-op to be sold. They can also create collections of all the chi enriching products to a wishlist to later review and to buy!  This is a totally unique application that will take the world by storm! Problem is we don't know how to build a website, or a server, or an A-Pea-eye? ...So that is where you come in!  We need your help building our dream, if completed to our specifications when we launch you will be given an AmaZen `gift card**` worthy of your efforts. What an exciting opportunity no?
 
 ## Goals
 
