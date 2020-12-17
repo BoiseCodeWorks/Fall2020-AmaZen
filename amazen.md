@@ -27,7 +27,7 @@ There is no single template that will give you everything you need this time aro
 
 For the front end, students should use the **Vue-Starter** template from the `bcw-create` CLI tool.  Students will have to set up their own Auth0 environment variables here as well.
 
-On the server side, you will want to set up your Auth0 and Database Variables as well. Starting development for AmaZen you will want to create some models. When doing this keep in mind the relationship between `products` and wish `lists`. You will need to manage the users `profile`, their `products`, `wish lists` and their respective relationship model(wishlistproduct, productwishlist) as well as the view model to go with it.
+On the server side, you will want to set up your Auth0 and Database Variables as well. Starting development for AmaZen you will want to create some models. When doing this keep in mind the relationship between `products` and `wishlists`. You will need to manage the users `profile`, their `products`, `wishlists` and their respective relationship model(wishlistproduct, productwishlist) as well as the view model to go with it.
 
 Members will be allowed to create `products` and then save those `products` and the  `products` of others in their `wish lists`.
 
@@ -42,7 +42,7 @@ Members will be allowed to create `products` and then save those `products` and 
 - From the **Product** Page a user can view all the details of a product
 - **Products** follow the given product model
 - From the **Product** Page a user can at that product to one of their wishlists
-- Wishlists can be created/deleted on the **Profile/Wishlists** page
+- Wishlists can be created/deleted on the **Profile/Wishlists** pages
 - Only authenticated users currently logged in can create wishlists
 - A user can view all of their wished products from the **Wishlist** page
 - A user can remove products from a wishlist
